@@ -3,21 +3,21 @@ import "reflect-metadata"
 // import {User} from "./entity/User"
 import express from 'express'
 import {ApolloServer} from 'apollo-server-express'
+import { buildSchema } from "type-graphql";
+import { UserResolver } from "./userResolver";
+import { createConnection } from "typeorm";
 
 (async () => {
     const app = express();
     app.get('/', (_req, res ) => res.send('hello'))
 
+    await createConnection()
+
     const apolloServer = new ApolloServer({
-        typeDefs: `
-        type Query {
-            hello: String!
-        }`,
-        resolvers: {
-            Query: {
-                hello: () => 'hello world'
-            }
-        }
+        schema: await buildSchema({
+            resolvers: [UserResolver]
+        }),
+        context: ({req, res}) => ({req, res})
     })
 
     apolloServer.applyMiddleware({app})
