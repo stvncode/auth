@@ -20,7 +20,7 @@ import { sendRefreshToken } from "./sendRefreshToken";
 
     //handle refresh
     app.post('/refresh_token', async (req, res) => {
-        const token = req.cookies.tok
+        const token = req.cookies.jid
         if(!token) {
             return res.send({ ok: false, accessToken: ''})
         }
@@ -38,6 +38,10 @@ import { sendRefreshToken } from "./sendRefreshToken";
         const user = await User.findOne({id: payload.userId}) 
 
         if(!user) {
+            return res.send({ ok: false, accessToken: ''})
+        }
+
+        if(user.tokenVersion !== payload.tokenVersion) {
             return res.send({ ok: false, accessToken: ''})
         }
 
