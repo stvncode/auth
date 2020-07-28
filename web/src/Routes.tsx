@@ -11,6 +11,9 @@ export const Routes: React.FC = () => {
     <div>
       <header>
         <div>
+          <Link to='/'>home</Link>
+        </div>
+        <div>
           <Link to='/register'>register</Link>
         </div>
         <div>

@@ -4,6 +4,5 @@ interface HomeProps {
 
 }
 
-export const Home: React.FC<HomeProps> = ({}) => {
-        return <div>Home page</div>
-}
+export const Home: React.FC<HomeProps> = () =>
+<div>Home page</div>
