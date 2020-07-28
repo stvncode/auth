@@ -1,16 +1,15 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { helloQuery } from './graphql/hello'
+import { useHelloQuery } from './generated/graphql'
 
 export const App: React.FC = () => {
-  const {data, loading} = useQuery(helloQuery)
+  const {data, loading} = useHelloQuery()
 
-  if(loading) {
+  if(loading || !data) {
     return <div>loading...</div>
   }
   return (
     <div>
-      {JSON.stringify(data )}
+      {data.hello}
     </div>
   )
 }
