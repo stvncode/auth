@@ -1,11 +1,7 @@
 import React from 'react'
 import { useByeQuery } from '../generated/graphql'
 
-interface ByeProps {
-
-}
-
-export const Bye: React.FC<ByeProps> = ({}) => {
+export const Bye: React.FC = () => {
     const {data, loading, error} = useByeQuery()
 
     if(loading) {
