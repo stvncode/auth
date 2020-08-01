@@ -1,0 +1,19 @@
+{
+    "@error-color": "#f5222d",
+    "@heading-color": "grey",
+    "@primary-color": "#28d1c1",
+    "@normal-color": "#f0fffb",
+    "@primary-5": "#4edecb",
+    "@text-color": "grey",
+    "@font-family": "@font-family-no-number",
+    "@font-family-no-number": "Lato, sans-serif",
+    "@font-size-sm": "10px",
+    "@font-size-base": "12px",
+    "@font-size-lg": "14px",
+    "@btn-height-base": "28px",
+    "@btn-height-lg": "34px",
+    "@btn-height-sm": "20px",
+    "@input-height-base": "28px",
+    "@input-height-lg": "34px",
+    "@input-height-sm": "20px"
+  }
