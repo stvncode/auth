@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes } from './Routes'
 import { setAccessToken } from './accessToken'
+import { Spin } from './components/spin/Spin'
 
 export const App: React.FC = () => {
     const [loading, setLoading] = useState(true)
@@ -17,7 +18,7 @@ export const App: React.FC = () => {
     }, [])
 
     if(loading) {
-        return <div>loading...</div>
+        return <div><Spin /></div>
     }
         return <Routes />
 }

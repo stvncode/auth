@@ -1,5 +1,6 @@
 import React from 'react'
 import { useByeQuery } from '../generated/graphql'
+import { Spin } from '../components/spin/Spin'
 
 export const Bye: React.FC = () => {
     const {data, loading, error} = useByeQuery({
@@ -7,7 +8,7 @@ export const Bye: React.FC = () => {
     })
 
     if(loading) {
-        return <div>loading...</div>
+        return <div><Spin /></div>
     }
 
     if(error) {

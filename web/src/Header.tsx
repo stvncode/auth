@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useMeQuery, useLogoutMutation } from './generated/graphql'
 import { setAccessToken } from './accessToken'
+import { Button } from './components/button/Button'
+import { Spin } from './components/spin/Spin'
 
 
 export const Header: React.FC = () => {
@@ -10,7 +12,7 @@ export const Header: React.FC = () => {
     let body: any = null
 
     if(loading) {
-        body = <div>loading...</div>
+        body = <div><Spin /></div>
     } else if (data && data.me) {
         body = <div>You are logged in as {data.me.email}</div>
     } else {
@@ -35,7 +37,7 @@ export const Header: React.FC = () => {
             </div>
             <div>
                 {!loading && data && data.me &&
-                    <button 
+                    <Button 
                         onClick={async () => {
                             await logout()
                             setAccessToken('')
@@ -43,7 +45,7 @@ export const Header: React.FC = () => {
                         }}
                     >
                         logout
-                    </button>
+                    </Button>
                 }               
             </div>
             {body}

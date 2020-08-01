@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { useLoginMutation, MeDocument, MeQuery } from '../generated/graphql'
 import { setAccessToken } from '../accessToken'
+import { Input } from '../components/input/Input'
 
 
 export const Login: React.FC<RouteComponentProps> = ({history}) => {
@@ -42,7 +43,7 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
             history.push('/')
         }}>
             <div>
-                <input  
+                <Input  
                     value={email}
                     placeholder={email}
                     onChange={e => {
@@ -51,7 +52,7 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
                 />
             </div>
             <div>
-                <input 
+                <Input 
                     type='password' 
                     value={password}
                     placeholder={password}

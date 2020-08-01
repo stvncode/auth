@@ -1,5 +1,6 @@
 import React from 'react'
 import {useUsersQuery} from '../generated/graphql'
+import { Spin } from '../components/spin/Spin'
 
 interface HomeProps {
 
@@ -9,7 +10,7 @@ export const Home: React.FC<HomeProps> = () => {
     const {data} = useUsersQuery({fetchPolicy: 'network-only'})
 
     if(!data) {
-        return <div>loading...</div>
+        return <div><Spin /></div>
     }
 return <div>
             <div>users:</div>
