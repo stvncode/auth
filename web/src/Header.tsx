@@ -4,7 +4,7 @@ import { useMeQuery, useLogoutMutation } from './generated/graphql'
 import { setAccessToken } from './accessToken'
 import { Button } from './components/button/Button'
 import { Spin } from './components/spin/Spin'
-
+import { css } from './app.styles'
 
 export const Header: React.FC = () => {
     const {data, loading} = useMeQuery()
@@ -22,33 +22,35 @@ export const Header: React.FC = () => {
     const [logout, {client}] = useLogoutMutation()
 
     return (
-        <header>
+        <>
+        <div className={css.header}>
             <div>
-            <Link to='/'>home</Link>
+            <Link className={css.link} to='/'>home</Link>
             </div>
             <div>
-            <Link to='/register'>register</Link>
+            <Link className={css.link} to='/register'>register</Link>
+            </div>
+            <div >
+            <Link className={css.link} to='/login'>login</Link>
             </div>
             <div>
-            <Link to='/login'>login</Link>
+            <Link className={css.link} to='/bye'>bye</Link>
             </div>
-            <div>
-            <Link to='/bye'>bye</Link>
-            </div>
-            <div>
-                {!loading && data && data.me &&
-                    <Button 
-                        onClick={async () => {
-                            await logout()
-                            setAccessToken('')
-                            await client!.resetStore()
-                        }}
-                    >
-                        logout
-                    </Button>
-                }               
-            </div>
-            {body}
-      </header>
+      </div>
+      {body}
+      <div>
+      {!loading && data && data.me &&
+          <Button 
+              onClick={async () => {
+                  await logout()
+                  setAccessToken('')
+                  await client!.resetStore()
+              }}
+          >
+              logout
+          </Button>
+      }               
+  </div>
+  </>
         )
 }
